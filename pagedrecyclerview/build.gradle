@@ -1,5 +1,26 @@
 apply plugin: 'com.android.library'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "paged-recycler-view"
+        websiteUrl = "https://github.com/JMLeiva/PagedRecyclerView"
+        vcsUrl = "https://github.com/JMLeiva/PagedRecyclerView.git"
+        licenses = ["LGPL-3.0"]
+        publish = true
+        version {
+            name = '1.0'
+        }
+    }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"

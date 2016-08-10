@@ -1,4 +1,4 @@
-package jmleiva.pagedrecyclerview;
+package com.jmleiva.pagedrecyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;

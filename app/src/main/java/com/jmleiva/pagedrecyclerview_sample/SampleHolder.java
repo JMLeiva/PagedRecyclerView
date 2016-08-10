@@ -1,8 +1,9 @@
-package jmleiva.pagedrecyclerview;
+package com.jmleiva.pagedrecyclerview_sample;
 
-
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
+import com.jmleiva.pagedrecyclerview.PagedViewHolder;
+import jmleiva.pagedrecyclerview_sample.R;
 
 /*
 This file is part of PagedRecyclerView
@@ -21,10 +22,16 @@ You should have received a copy of the GNU General Public License
 along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-public class PagedViewHolder extends RecyclerView.ViewHolder
+public class SampleHolder
 {
-    public PagedViewHolder(View itemView)
+    public static class Text extends PagedViewHolder
     {
-        super(itemView);
+        public TextView textView;
+
+        public Text(View itemView)
+        {
+            super(itemView);
+            textView = (TextView)itemView.findViewById(R.id.textView);
+        }
     }
 }

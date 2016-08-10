@@ -1,5 +1,5 @@
 
-package jmleiva.pagedrecyclerview_sample;
+package com.jmleiva.pagedrecyclerview_sample;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
+import com.jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
+
+import jmleiva.pagedrecyclerview_sample.R;
 
 /*
 This file is part of PagedRecyclerView

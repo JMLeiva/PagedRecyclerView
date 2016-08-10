@@ -1,16 +1,14 @@
-package jmleiva.pagedrecyclerview_sample;
+package com.jmleiva.pagedrecyclerview_sample;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
+import com.jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
+import com.jmleiva.pagedrecyclerview.PagedViewHolder;
 
-import jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
-import jmleiva.pagedrecyclerview.PagedViewHolder;
-
+import jmleiva.pagedrecyclerview_sample.R;
 
 /*
 This file is part of PagedRecyclerView
