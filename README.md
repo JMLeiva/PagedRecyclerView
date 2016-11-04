@@ -7,28 +7,13 @@ You can customize the loading layout, and all the data process is done through a
 
 ####1) Add the library to your proyect
 
-(Soon it will be available as part a the JCenter repository)
-
-Add the following repository to allprojects in your app's gradle file
-
-```
-allprojects {
-    repositories {
-        .............
-        maven {
-            .......
-            url 'http://dl.bintray.com/jmleiva/maven/'
-        }
-    }
-```
-
 Add the dependency in your project gralde file
 
 
 ```
 dependencies {
     ........................
-    compile 'com.jmleiva.pagedrecyclerview:pagedrecyclerview:1.0'
+    compile 'com.jmleiva.pagedrecyclerview:pagedrecyclerview:1.2'
 }
 ```
 
