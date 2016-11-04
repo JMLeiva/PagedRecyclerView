@@ -3,7 +3,6 @@ package com.jmleiva.pagedrecyclerview_sample;
 import android.view.View;
 import android.widget.TextView;
 import com.jmleiva.pagedrecyclerview.PagedViewHolder;
-import jmleiva.pagedrecyclerview_sample.R;
 
 /*
 This file is part of PagedRecyclerView

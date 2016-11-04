@@ -8,8 +8,6 @@ import java.util.List;
 import com.jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
 import com.jmleiva.pagedrecyclerview.PagedViewHolder;
 
-import jmleiva.pagedrecyclerview_sample.R;
-
 /*
 This file is part of PagedRecyclerView
 

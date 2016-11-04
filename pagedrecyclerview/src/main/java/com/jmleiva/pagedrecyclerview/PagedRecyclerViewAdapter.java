@@ -22,140 +22,148 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 public abstract class PagedRecyclerViewAdapter<T extends PagedViewHolder, E extends PagedViewHolder> extends RecyclerView.Adapter<PagedViewHolder>
 {
-    public interface Paginator
-    {
-        void loadNewPage();
-        boolean hasMoreData();
-    }
+	public interface Paginator
+	{
+		void loadNewPage();
 
-    private final static int NORMAL_VIEW_TYPE = 0;
-    private final static int LOADING_VIEW_TYPE = 0x70000000;
+		boolean hasMoreData();
+	}
 
-    /*
-    Proxy for getItemCount. Must return the current ammount of items in the RecyclerView
-     */
-    protected abstract int getPagedItemCount();
+	private final static int NORMAL_VIEW_TYPE = 0;
+	private final static int LOADING_VIEW_TYPE = 0x70000000;
 
-    /*
-    Proxy for getItemViewType. Must return the current type for a certain position
-     */
-    protected int getPagedViewType(int position)
-    {
-        return 0;
-    }
+	/*
+	Proxy for getItemCount. Must return the current ammount of items in the RecyclerView
+	 */
+	protected abstract int getPagedItemCount();
 
-    /*
-    Proxy for onCreateViewHolder for normal items. Must initialize the view, and return a PagedViewHolder or a subclass.
-     */
-    protected  abstract T onCreateNormalViewHolder(ViewGroup parent, int viewType);
+	/*
+	Proxy for getItemViewType. Must return the current type for a certain position
+	 */
+	protected int getPagedViewType(int position)
+	{
+		return 0;
+	}
 
-    /*
-    Proxy for onCreateViewHolder for loading item. Must initialize the view, and return a PagedViewHolder or a subclass.
-    */
-    protected abstract E onCreateLoadingViewHolder(ViewGroup parent, int viewType);
+	/*
+	Proxy for onCreateViewHolder for normal items. Must initialize the view, and return a PagedViewHolder or a subclass.
+	 */
+	protected abstract T onCreateNormalViewHolder(ViewGroup parent, int viewType);
 
-    /*
-    Proxy for onBindViewHolder for normal items. Must bind the data in the holder for a certain position
-     */
-    protected abstract void onBindNormalViewHolder(T holder, int position);
+	/*
+	Proxy for onCreateViewHolder for loading item. Must initialize the view, and return a PagedViewHolder or a subclass.
+	*/
+	protected abstract E onCreateLoadingViewHolder(ViewGroup parent, int viewType);
 
-    /*
-    Proxy for onBindViewHolder for loading item. Must bind the data in the holder for the loading item.
-     */
-    protected abstract void onBindLoadingViewHolder(E holder);
+	/*
+	Proxy for onBindViewHolder for normal items. Must bind the data in the holder for a certain position
+	 */
+	protected abstract void onBindNormalViewHolder(T holder, int position);
 
-
-    private boolean loading;
-    private Paginator paginator;
-
-    public PagedRecyclerViewAdapter()
-    {
-        loading = false;
-    }
-
-    public Paginator getPaginator() {
-        return paginator;
-    }
-
-    public void setPaginator(Paginator paginator) {
-        this.paginator = paginator;
-    }
-
-    /*
-    Call this after loadNewPage has been called on the paginator. Al long as this is no called
-    The adapter will continue to be in a loading state.
-     */
-    public void stopLoading()
-    {
-        loading = false;
-        notifyDataSetChanged();
-    }
+	/*
+	Proxy for onBindViewHolder for loading item. Must bind the data in the holder for the loading item.
+	 */
+	protected abstract void onBindLoadingViewHolder(E holder);
 
 
-    private boolean hasMoreData()
-    {
-        if(paginator != null)
-        {
-            return  paginator.hasMoreData();
-        }
+	private boolean loading;
+	private Paginator paginator;
 
-        return false;
-    }
+	public PagedRecyclerViewAdapter()
+	{
+		loading = false;
+	}
 
-    @Override
-    final public PagedViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
-        if(viewType >= NORMAL_VIEW_TYPE && viewType < LOADING_VIEW_TYPE)
-        {
-            return onCreateNormalViewHolder(parent, viewType - NORMAL_VIEW_TYPE);
-        }
-        else
-        {
-            return onCreateLoadingViewHolder(parent, viewType - LOADING_VIEW_TYPE);
-        }
-    }
+	public Paginator getPaginator()
+	{
+		return paginator;
+	}
 
-    @Override
-    final public void onBindViewHolder(PagedViewHolder holder, int position)
-    {
-        if(hasMoreData() && position >= getPagedItemCount())
-        {
-            if(!loading)
-            {
-                loading = true;
+	public void setPaginator(Paginator paginator)
+	{
+		this.paginator = paginator;
+	}
 
-                if(paginator != null)
-                {
-                    paginator.loadNewPage();
-                }
-            }
+	/*
+	Call this after loadNewPage has been called on the paginator. Al long as this is no called
+	The adapter will continue to be in a loading state.
+	 */
+	public void stopLoading()
+	{
+		loading = false;
+		notifyDataSetChanged();
+	}
 
-            onBindLoadingViewHolder((E)holder);
-        }
-        else
-        {
 
-            onBindNormalViewHolder((T) holder, position);
-        }
-    }
+	private boolean hasMoreData()
+	{
+		if (paginator != null)
+		{
+			return paginator.hasMoreData();
+		}
 
-    @Override
-    final public int getItemViewType(int position)
-    {
-        if(hasMoreData() && position >= getPagedItemCount())
-        {
-            return getPagedViewType(position) + LOADING_VIEW_TYPE;
-        }
-        else
-        {
-            return getPagedViewType(position) + NORMAL_VIEW_TYPE;
-        }
+		return false;
+	}
 
-    }
+	@Override
+	final public PagedViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+	{
+		if (viewType >= NORMAL_VIEW_TYPE && viewType < LOADING_VIEW_TYPE)
+		{
+			return onCreateNormalViewHolder(parent, viewType - NORMAL_VIEW_TYPE);
+		}
+		else
+		{
+			return onCreateLoadingViewHolder(parent, viewType - LOADING_VIEW_TYPE);
+		}
+	}
 
-    @Override
-    final public int getItemCount()
-    {
-        return getPagedItemCount() + (hasMoreData() ? 1 : 0);
-    }
+	@Override
+	final public void onBindViewHolder(PagedViewHolder holder, int position)
+	{
+		if (hasMoreData() && position >= getPagedItemCount())
+		{
+			if (!loading)
+			{
+				loading = true;
+
+				if (paginator != null)
+				{
+					paginator.loadNewPage();
+				}
+			}
+
+			onBindLoadingViewHolder((E) holder);
+		}
+		else
+		{
+
+			onBindNormalViewHolder((T) holder, position);
+		}
+	}
+
+	@Override
+	final public int getItemViewType(int position)
+	{
+		if (hasMoreData() && position >= getPagedItemCount())
+		{
+			return getPagedViewType(position) + LOADING_VIEW_TYPE;
+		}
+		else
+		{
+			return getPagedViewType(position) + NORMAL_VIEW_TYPE;
+		}
+
+	}
+
+	@Override
+	final public int getItemCount()
+	{
+		return getPagedItemCount() + (hasMoreData() ? 1 : 0);
+	}
+
+	public boolean isLoading()
+	{
+		return loading;
+	}
 }

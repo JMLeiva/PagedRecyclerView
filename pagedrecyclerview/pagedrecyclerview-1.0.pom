@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>PagedRecyclerView</groupId>
+  <artifactId>paged-recycler-view</artifactId>
+  <version>1.1</version>
+  <packaging>aar</packaging>
+  <name>PagedRecyclerView</name>
+  <description>A Paged RecyclerView Adapter</description>
+  <licenses>
+    <license>
+      <name>LGPL-3.0</name>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>com.jmleiva</id>
+      <name>Juan Martin Leiva</name>
+      <email>jm.leiva91@gmail.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>https://github.com/JMLeiva/PagedRecyclerView.git</connection>
+    <developerConnection>https://github.com/JMLeiva/PagedRecyclerView.git</developerConnection>
+    <url>https://github.com/JMLeiva/PagedRecyclerView</url>
+  </scm>
+</project>

@@ -1,4 +1,6 @@
+apply plugin: 'maven'
 apply plugin: 'com.android.library'
+
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -8,18 +10,79 @@ bintray {
     key = properties.getProperty("bintray.apikey")
 
     configurations = ['archives']
+
     pkg {
         repo = "maven"
         name = "paged-recycler-view"
         websiteUrl = "https://github.com/JMLeiva/PagedRecyclerView"
         vcsUrl = "https://github.com/JMLeiva/PagedRecyclerView.git"
-        licenses = ["LGPL-3.0"]
         publish = true
         version {
-            name = '1.0'
+            name = '1.1'
+            released  = new Date()
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty("bintray.gpg.password") //Optional. The passphrase for GPG signing'
+            }
         }
     }
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'paged-recycler-view'
+
+    publishedGroupId = 'com.jmleiva.pagedrecyclerview'
+    libraryName = 'PagedRecyclerView'
+    artifact = 'paged-recycler-view'
+
+    libraryDescription = 'RecyclerView adapter with Paging capabilities for Android'
+
+    siteUrl = 'https://github.com/JMLeiva/PagedRecyclerView'
+    gitUrl = 'https://github.com/JMLeiva/PagedRecyclerView.git'
+
+    libraryVersion = '1.1'
+
+    developerId = 'jmleiva'
+    developerName = 'Juan Martin Leiva'
+    developerEmail = 'jm.leiva91@gmail.com'
+
+    licenseName = 'GNU LESSER GENERAL PUBLIC LICENSE, Version 3.0'
+    licenseUrl = 'https://www.gnu.org/licenses/lgpl-3.0.en.html'
+    allLicenses = ["LGPLv3"]
+}
+
+/*
+task createPom << {
+    pom {
+        project {
+            name "PagedRecyclerView"
+            packaging project.name == 'compiler' ? 'jar' : 'aar'
+            description 'A Paged RecyclerView Adapter'
+            version '1.0'
+
+            scm {
+                url 'https://github.com/JMLeiva/PagedRecyclerView'
+                connection 'https://github.com/JMLeiva/PagedRecyclerView.git'
+                developerConnection 'https://github.com/JMLeiva/PagedRecyclerView.git'
+            }
+
+            licenses {
+                license {
+                    name "LGPL-3.0"
+                }
+            }
+
+            developers {
+                developer {
+                    id 'com.jmleiva'
+                    name 'Juan Martin Leiva'
+                    email 'jm.leiva91@gmail.com'
+                }
+            }
+        }
+    }.writeTo("pom.xml")
+}*/
 
 android {
     compileSdkVersion 23
@@ -29,7 +92,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -45,3 +108,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
