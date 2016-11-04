@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>PagedRecyclerView</groupId>
-  <artifactId>paged-recycler-view</artifactId>
+  <artifactId>pagedrecyclerview</artifactId>
   <version>1.1</version>
   <packaging>aar</packaging>
   <name>PagedRecyclerView</name>

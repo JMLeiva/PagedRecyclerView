@@ -18,7 +18,7 @@ bintray {
         vcsUrl = "https://github.com/JMLeiva/PagedRecyclerView.git"
         publish = true
         version {
-            name = '1.1'
+            name = '1.2'
             released  = new Date()
             gpg {
                 sign = true //Determines whether to GPG sign the files. The default is false
@@ -34,14 +34,14 @@ ext {
 
     publishedGroupId = 'com.jmleiva.pagedrecyclerview'
     libraryName = 'PagedRecyclerView'
-    artifact = 'paged-recycler-view'
+    artifact = 'pagedrecyclerview'
 
     libraryDescription = 'RecyclerView adapter with Paging capabilities for Android'
 
     siteUrl = 'https://github.com/JMLeiva/PagedRecyclerView'
     gitUrl = 'https://github.com/JMLeiva/PagedRecyclerView.git'
 
-    libraryVersion = '1.1'
+    libraryVersion = '1.2'
 
     developerId = 'jmleiva'
     developerName = 'Juan Martin Leiva'
@@ -92,7 +92,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.1"
+        versionName "1.2"
     }
     buildTypes {
         release {
