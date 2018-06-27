@@ -6,14 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.jmleiva.pagedrecyclerview.PagedRecyclerViewAdapter;
 
 /*
 This file is part of PagedRecyclerView
 
-PagedRecyclerView is free software: you can redistribute it and/or modify
+PagedRecyclerView by JMLeiva is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -24,7 +26,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+along with PagedRecyclerView.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 public class MainActivity extends AppCompatActivity implements PagedRecyclerViewAdapter.Paginator {
