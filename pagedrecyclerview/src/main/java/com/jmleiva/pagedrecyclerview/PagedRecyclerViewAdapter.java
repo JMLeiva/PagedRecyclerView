@@ -164,6 +164,11 @@ public abstract class PagedRecyclerViewAdapter<T extends PagedViewHolder, E exte
 
 	public boolean isLoading()
 	{
+		if(!loading && this.getPaginator() != null && this.getPaginator().hasMoreData())
+		{
+			return true;
+		}
+
 		return loading;
 	}
 }
